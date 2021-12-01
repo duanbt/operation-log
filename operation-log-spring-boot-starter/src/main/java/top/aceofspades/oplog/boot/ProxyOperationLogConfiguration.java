@@ -1,10 +1,8 @@
 package top.aceofspades.oplog.boot;
 
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Role;
 import top.aceofspades.oplog.core.aop.BeanFactoryLogOperationSourceAdvisor;
 import top.aceofspades.oplog.core.aop.LogInterceptor;
 import top.aceofspades.oplog.core.aop.LogOperationSource;
@@ -27,7 +25,6 @@ import java.util.List;
 public class ProxyOperationLogConfiguration {
 
     @Bean
-    @Role(BeanDefinition.ROLE_INFRASTRUCTURE)
     public BeanFactoryLogOperationSourceAdvisor logAdvisor(LogInterceptor logInterceptor) {
         BeanFactoryLogOperationSourceAdvisor advisor = new BeanFactoryLogOperationSourceAdvisor();
         advisor.setLogOperationSource(logOperationSource());
